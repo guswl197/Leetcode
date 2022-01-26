@@ -1,15 +1,10 @@
 class Solution {
 public:
     string restoreString(string s, vector<int>& indices) {
-        vector<char> arr(indices.size());
-        string str; 
+        string str=s; 
         
         for(int i=0;i<indices.size();i++){
-            arr[indices[i]]=s[i]; 
-        }
-        
-        for(int i=0;i<indices.size();i++){
-            str.push_back(arr[i]);
+            str[indices[i]]=s[i]; 
         }
      
         return str; 
