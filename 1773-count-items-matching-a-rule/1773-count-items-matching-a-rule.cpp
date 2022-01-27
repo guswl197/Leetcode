@@ -3,18 +3,13 @@ public:
     int countMatches(vector<vector<string>>& items, string ruleKey, string ruleValue) {
         
         int cnt=0; 
-        for(int i=0; i<items.size();i++){
-            if(ruleKey=="type"&& ruleValue==items[i][0]){
-                cnt++;
-            }
-            else if(ruleKey=="color"&& ruleValue==items[i][1]){
-                cnt++;
-            }
-            else if(ruleKey == "name"&& ruleValue==items[i][2]){
+        auto i = ruleKey=="type"? 0: ruleKey=="color"? 1:2;
+        
+        for(auto item : items){
+            if(item[i]==ruleValue){
                 cnt++;
             }
         }
-        
         return cnt;
     }
 };
