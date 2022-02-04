@@ -30,26 +30,26 @@ public:
            
                 if(top->left){
                     q.push(top->left);
-                     if(top->val%2==0){
-                    if(top->left->left){
-                    sum+=top->left->left->val;
+                    if(top->val%2==0){
+                        if(top->left->left){
+                            sum+=top->left->left->val;
+                        }
+                        if(top->left->right){
+                            sum+=top->left->right->val;
+                        }
                     }
-                    if(top->left->right){
-                    sum+=top->left->right->val;
-                    }
-                     }
                 }
+            
                 if(top->right){
                     q.push(top->right);
                     if(top->val%2==0){
-                     if(top->right->left){
-                    sum+=top->right->left->val;
-                     }
-                     if(top->right->right){
-                    sum+=top->right->right->val;
-                     }
+                        if(top->right->left){
+                            sum+=top->right->left->val;
+                        }
+                        if(top->right->right){
+                            sum+=top->right->right->val;
+                        }
                     }
-                
             }
         }
         
