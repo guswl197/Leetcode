@@ -1,29 +1,31 @@
 class OrderedStream {
-public:
-    vector<string> res;
-    int ptr; 
+
+vector<string> res;
+int ptr; 
     
+public:
     OrderedStream(int n) {
         ptr=1; 
-        res.resize(n);  
+        res.resize(n); 
     }
     
-    vector<string> insert(int idKey, string value){
+    vector<string> insert(int idKey, string value) {
+        
         vector<string> ans; 
         res[idKey-1]=value; 
         
-        if(ptr==idKey){
-            int i=ptr-1;
-                
-            for(; i<res.size();i++){
+        if(ptr == idKey){
+            int i=ptr-1; 
+            
+            for(;i<res.size();i++){
                 if(res[i]==""){
-                    break; 
+                    break;
                 }
                 ans.push_back(res[i]); 
             }
             ptr=i+1; 
         }
-       return ans;
+       return ans; 
     }
 };
 
