@@ -10,22 +10,27 @@
  * };
  */
 class Solution {
-public:
-    int rangeSumBST(TreeNode* root, int low, int high) {
-        int sum=0;
-        if(!root){
-            return 0; 
-        }
-        else if(root->val>=low && root->val <= high){
-           return root->val+rangeSumBST(root->right,low,high)+ rangeSumBST(root->left,low,high);
-        }
-        else if(root->val > high){
-            return rangeSumBST(root->left,low,high);
-        }
-          else if(root->val < low){
-            return rangeSumBST(root->right,low,high);
-        }
+int sum=0;
     
-        return 0; 
+    public:
+    int rangeSumBST(TreeNode* root, int low, int high) {
+       //dfs
+        
+        if(!root){
+            return 0;
+        }
+        
+        if(low<=root->val && root->val <=high){
+            sum+=root->val; 
+        }
+        if(root->right){
+                rangeSumBST(root->right,low,high);
+        }
+        if(root->left){
+                rangeSumBST(root->left,low,high);
+        }
+        
+    
+        return sum; 
     }
 };
