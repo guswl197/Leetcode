@@ -40,7 +40,7 @@ public:
         queue<TreeNode*> q;
         q.push(root); 
         while(!q.empty()){
-            sum=0, n=size(q); 
+            sum=0, n=q.size();
             
             for(int i=0; i<n;i++){
                 auto top=q.front(); 
