@@ -11,72 +11,37 @@
  */
 class Solution {
 public:
+    int ans=0; 
+    
     int sumEvenGrandparent(TreeNode* root) {
         
-        /*====BFS====*/
-        
-         if(root==NULL){
+        if(!root){
             return 0;
         }
+      
+       if(root->left){
+           sumEvenGrandparent(root->left); 
+           if(root->val %2 ==0){
+               if(root->left->left){
+                    ans+=root->left->left->val;
+               }
+               if(root->left->right){
+                    ans+=root->left->right->val;
+               }
+           }
+       }
+       if(root->right){
+            sumEvenGrandparent(root->right); 
+           if(root->val %2 ==0){
+               if(root->right->left){
+                    ans+=root->right->left->val;
+               }
+               if(root->right->right){
+                    ans+=root->right->right->val;
+               }
+           }
+       }
         
-        int sum=0;
-        queue<TreeNode*> q; 
-        q.push(root); 
-        
-        while(!q.empty()){
-            auto top= q.front();
-            q.pop();
-            
-           
-                if(top->left){
-                    q.push(top->left);
-                    if(top->val%2==0){
-                        if(top->left->left){
-                            sum+=top->left->left->val;
-                        }
-                        if(top->left->right){
-                            sum+=top->left->right->val;
-                        }
-                    }
-                }
-            
-                if(top->right){
-                    q.push(top->right);
-                    if(top->val%2==0){
-                        if(top->right->left){
-                            sum+=top->right->left->val;
-                        }
-                        if(top->right->right){
-                            sum+=top->right->right->val;
-                        }
-                    }
-            }
-        }
-        
-        return sum; 
-        
-        
-        /*====DFS====*/
-        /*
-        if(root==NULL){
-            return 0;
-        }
-        int sum=0; 
-        
-        if(root->val%2==0){
-            if(root->left!=NULL && root->left->left!=NULL)
-                sum+=root->left->left->val;
-            if(root->left!=NULL && root->left->right!=NULL)
-                sum+=root->left->right->val;
-            if(root->right!=NULL && root->right->right!=NULL)
-                sum+=root->right->right->val;
-            if(root->right!=NULL && root->right->left!=NULL)
-                sum+=root->right->left->val;
-        }
-        
-        sum+=sumEvenGrandparent(root->left); 
-        sum+=sumEvenGrandparent(root->right);
-        return sum; 
-        */
+        return ans; 
     }
 };
