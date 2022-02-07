@@ -1,16 +1,11 @@
 class Solution {
 public:
     int minimumSum(int num) {
-        vector<int> v; 
+        string s= to_string(num); 
+      
+        sort(s.begin(), s.end()); 
         
-        for(int i=0; i<4;i++){
-            v.push_back(num%10); 
-            num/=10; 
-        }
-        
-        sort(v.begin(), v.end()); 
-        
-        int ans= v[0]*10 + v[3]+ v[1]*10+ v[2]; 
+        int ans= (s[0]-'0')*10 + (s[3]-'0')+ (s[1]-'0')*10+ s[2]-'0'; 
         
         return ans; 
     }
