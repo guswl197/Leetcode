@@ -4,9 +4,7 @@ public:
         string ans;
         for(int i=num.size()-1; i>=0; i--){
             if(num[i]%2!=0){
-                for(int j=0; j<=i; j++){
-                    ans+=num[j]; 
-                }
+                return num.substr(0,i+1); 
                 break;
             }
         }
